@@ -13,17 +13,11 @@
 <body>
 
     <div id="app">
-      <input type="text" id="inputTexto">
-      <br>
-      <select id="opcoes" @change="selecionarElementoFilho()">
-        <option value="A">Opção A</option>
-        <option value="B">Opção B</option>
-        <option value="C">Opção C</option>
-      </select>
-      <button @click="selecionarElementoFilho()">Botão</button>
-      <p>{{ valor }}</p>
-      <hr>
-      <p id="paragrafo" style="color: red;">Parágrafo!!</p>
+      <button @click="exibirSaldo = !exibirSaldo">
+        <span v-if="!exibirSaldo">Exibir saldo</span>
+        <span v-if="exibirSaldo">Ocultar saldo</span>
+      </button>
+      <p>Saldo => <span v-if="exibirSaldo">R$ {{ saldo }}</span></p>
     </div>
 
     <script>
@@ -31,15 +25,10 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                valor: ''
+                saldo: 18000.00,
+                exibirSaldo: true
             },
-            methods: {
-                selecionarElementoFilho(){
-                    //console.log(inputTexto.value);
-                    this.valor = opcoes.value;
-                    console.log(paragrafo.style.color);
-                }
-            }
+            methods: {}
         });
 
     </script>
