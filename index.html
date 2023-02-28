@@ -7,48 +7,23 @@
     <script src="./vue.js"></script>
     <title>Document</title>
     <style>
-        .borda {
-            border: 1px solid;
-        }
-
-        .div-principal{
-            width: 200px;
-            height: 200px;
-        }
-
-        .div-comum{
-            width: 50px;
-            height: 50px;
-            display: inline-block;
-        }
-
-        .verde {
-            background-color: green;
-        }
-        
-        .branco {
-            background-color: white;
-        }
-
-        .azul {
-            background-color: blue;
-        }
-
-        .red {
-            background-color: red;
-        }
 
     </style>
 </head>
 <body>
 
     <div id="app">
-      <a href="https://google.com.br" target="_blank" @click="previnirComportamentoPadrao($event)">Link</a>
+      <input type="text" id="inputTexto">
       <br>
-      Mensagem: {{ msg }}
+      <select id="opcoes" @change="selecionarElementoFilho()">
+        <option value="A">Opção A</option>
+        <option value="B">Opção B</option>
+        <option value="C">Opção C</option>
+      </select>
+      <button @click="selecionarElementoFilho()">Botão</button>
+      <p>{{ valor }}</p>
       <hr>
-        <button @click.once="executarApenasUmaVez()">Botão</button>
-        <p>Cliques => {{ cliques}}</p>
+      <p id="paragrafo" style="color: red;">Parágrafo!!</p>
     </div>
 
     <script>
@@ -56,15 +31,13 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                msg: '',
-                cliques: 0
+                valor: ''
             },
             methods: {
-                previnirComportamentoPadrao(){
-                    this.msg = 'Comportamento padrão ativado.';
-                },
-                executarApenasUmaVez(){
-                    this.cliques++;
+                selecionarElementoFilho(){
+                    //console.log(inputTexto.value);
+                    this.valor = opcoes.value;
+                    console.log(paragrafo.style.color);
                 }
             }
         });
