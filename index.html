@@ -43,18 +43,12 @@
 <body>
 
     <div id="app">
-      
-        <div class="borda div-principal" :class="cor">
-            Cor: {{ cor }}
-            <br>
-            Posição X => {{ x }}
-            <br>
-            Posição Y => {{ y }}
-        </div>
-        <hr>
-        <div @click="mudarCor('verde')" class="borda div-comum"></div>
-        <div @mouseover="mudarCor('azul')" @mouseout="mudarCor('red')" class="borda div-comum"></div>
-        <div class="borda div-comum" @mousemove="coordenadas($event)"></div>
+      <a href="https://google.com.br" target="_blank" @click="previnirComportamentoPadrao($event)">Link</a>
+      <br>
+      Mensagem: {{ msg }}
+      <hr>
+        <button @click.once="executarApenasUmaVez()">Botão</button>
+        <p>Cliques => {{ cliques}}</p>
     </div>
 
     <script>
@@ -62,18 +56,15 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                cor: 'branco',
-                x: 0,
-                y: 0
+                msg: '',
+                cliques: 0
             },
             methods: {
-                mudarCor(c){
-                    this.cor = c;
+                previnirComportamentoPadrao(){
+                    this.msg = 'Comportamento padrão ativado.';
                 },
-                coordenadas(event){
-                    console.log('X => ' + event.clientX, 'Y => ' + event.clientY);
-                    this.x = event.clientX;
-                    this.y = event.clientY;
+                executarApenasUmaVez(){
+                    this.cliques++;
                 }
             }
         });
