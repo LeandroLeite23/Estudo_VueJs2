@@ -14,8 +14,32 @@
 
     <div id="app">
        <ul>
-        <li v-for="(curso, key) in cursos" v-text="key + ' - ' + curso"></li>
+            <li v-for="(curso, key) in cursos" v-text="key + ' - ' + curso"></li>
        </ul>
+       <hr>
+       <table border="1">
+        <thead>
+            <tr>
+                <th>Cod</th>
+                <th>Título</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="({titulo, descricao}, key) in cursos2"> <!--destructuring assignment example-->
+                <td>{{ key }}</td>
+                <td>{{ titulo }}</td>
+                <td>{{ descricao }}</td>
+            </tr>
+            
+            <!--<tr v-for="(curso, key) in cursos2"> navagando entre propriedades do objeto metodo convencional
+                <td>{{ key }}</td>
+                <td>{{curso.titulo}}</td>
+                <td>{{curso.descricao}}</td>
+            </tr>-->
+
+        </tbody>
+       </table>
     </div>
 
     <script>
@@ -29,7 +53,18 @@
                     'Banco de Dados',
                     'Solid',
                     'Angular'
-                ]
+                ],
+                cursos2: {
+                    1000:{
+                            titulo: 'Laravel',
+                            descricao: 'Domine o framework mais poderoso do mundo!'
+                        },
+                    1001:{
+                        titulo: 'Banco de dados',
+                        descricao: 'Aprenda os principais BDs relacionais do mercado!'
+
+                    }
+                }
             },
             methods: {}
         });
