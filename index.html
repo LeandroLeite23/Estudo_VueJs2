@@ -23,6 +23,7 @@
        </ul>
        <button @click="adicionarComentario()">Adicionar</button>
        <button @click="removerComentario()">Remover</button>
+       <button @click="modificaraComentario()">Atualizar</button>
 
        <hr>
        <table border="1">
@@ -114,6 +115,10 @@
                 },
                 removerComentario(){
                     this.elementos.pop();
+                },
+                modificaraComentario(){
+                    //this.elementos[0] = {id: 1, comentario: 'Comentário atualizado via...'}
+                    this.$set(this.elementos, 0, { id: 1, comentario: 'Comentário atualizado via...'})
                 }
             }
         });
