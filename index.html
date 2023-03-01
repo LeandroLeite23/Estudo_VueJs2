@@ -17,6 +17,14 @@
             <li v-for="(curso, key) in cursos" v-text="key + ' - ' + curso"></li>
        </ul>
        <hr>
+
+       <ul>
+            <li v-for="(e, key) in elementos">{{key}} - {{e.comentario}}</li>
+       </ul>
+       <button @click="adicionarComentario()">Adicionar</button>
+       <button @click="removerComentario()">Remover</button>
+
+       <hr>
        <table border="1">
         <thead>
             <tr>
@@ -60,6 +68,12 @@
         const vm = new Vue({
             el: '#app',
             data: {
+                elementos: [
+                    {id: 1, comentario: 'Comentario 1'},
+                    {id: 2, comentario: 'Comentario 2'},
+                    {id: 3, comentario: 'Comentario 3'},
+                    {id: 4, comentario: 'Comentario 4'},
+                ],
                 cursos: [
                     'Laravel',
                     'Web Completo',
@@ -94,6 +108,12 @@
                     misturado[2] = this.publicacoes[1]
 
                     this.publicacoes = misturado
+                },
+                adicionarComentario(){
+                    this.elementos.push({id: 5, comentario: 'Comentário 5'});
+                },
+                removerComentario(){
+                    this.elementos.pop();
                 }
             }
         });
