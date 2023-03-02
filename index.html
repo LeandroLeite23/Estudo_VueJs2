@@ -16,7 +16,13 @@
         <h3>Adicionar Pacientes</h3>
         <div><span style="margin-right: 17px;">Nome: </span><input type="text" id="inputNome"></div>
         <div><span  style="margin-right: 21px;">Idade: </span><input type="text" id="inputIdade"></div>
-        <div><span  style="margin-right: 20px;">Plano: </span><input type="text" id="inputPlano">
+        <div>
+            <span style="margin-right: 20px;">Plano: </span>
+            <select name="" id="inputPlano">
+                <option value="1">Bronze</option>
+                <option value="2">Prata</option>
+                <option value="3">Ouro</option>
+            </select>
             <button @click="adicionarPaciente()">Adicionar</button>
             <button @click="verQuantidadePacientes()">Qtd pacientes</button>
         </div>
@@ -35,7 +41,7 @@
         
         <ul>
             <!--<li v-for="p  in pacientes" v-if="p.plano == 'Master'">{{ p.nome }}</li>-->
-            <p v-for="p  in pacientes">{{ p.plano == 'Master' ? p.nome : '' }}</p>
+            <p v-for="p  in pacientes">{{ p.plano == 3 ? p.nome : '' }}</p>
         </ul>
         
         <hr>
