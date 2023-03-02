@@ -7,45 +7,50 @@
     <script src="./vue.js"></script>
     <title>Document</title>
     <style>
-
+        button {
+            cursor: pointer;
+            outline: none;
+        }
     </style>
 </head>
 <body>
 
     <div id="app">
         <h3>Adicionar Pacientes</h3>
-        <div><span style="margin-right: 17px;">Nome: </span><input type="text" id="inputNome"></div>
-        <div><span  style="margin-right: 21px;">Idade: </span><input type="text" id="inputIdade"></div>
+        <div>
+            <span style="margin-right: 17px;">Nome: </span>
+            <input type="text" id="inputNome">
+        </div>
+        <div>
+            <span style="margin-right: 21px;">Idade: </span>
+            <input type="text" id="inputIdade">
+        </div>
         <div>
             <span style="margin-right: 20px;">Plano: </span>
-            <select name="" id="inputPlano">
-                <option value="1">Bronze</option>
-                <option value="2">Prata</option>
-                <option value="3">Ouro</option>
+            <select id="inputPlano">
+                <option value="Bronze">Bronze</option>
+                <option value="Prata">Prata</option>
+                <option value="Ouro">Ouro</option>
             </select>
+        </div>
+        <br>
+        <div>
             <button @click="adicionarPaciente()">Adicionar</button>
-            <button @click="verQuantidadePacientes()">Qtd pacientes</button>
+            <button @click="verQuantidadePacientes()">Ver quantidade de pacientes</button>
         </div>
         <br>
         <hr>
-
         <h4>Último paciente cadastrado:</h4>
-        
         <p v-if="pacientes.length > 0">
            {{ ultimoPaciente }}
         </p>
-
         <hr>
-
         <h4>Pacientes plano master:</h4>
-        
         <ul>
             <!--<li v-for="p  in pacientes" v-if="p.plano == 'Master'">{{ p.nome }}</li>-->
-            <p v-for="p  in pacientes">{{ p.plano == 3 ? p.nome : '' }}</p>
+            <p v-for="p  in pacientes">{{ p.plano == 'Ouro' ? p.nome : '' }}</p>
         </ul>
-        
         <hr>
-
         <h4>Pacientes cadastrados</h4>
         <p v-for="p in pacientes">{{ p.nome }}</p>
     </div>
@@ -59,6 +64,7 @@
             },
             methods: {
                 adicionarPaciente(){
+                    
                     this.pacientes.push({
                             nome: inputNome.value,
                             idade: inputIdade.value,
