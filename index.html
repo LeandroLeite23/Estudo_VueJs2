@@ -18,7 +18,8 @@
     <div id="app">
         {{ paciente }}
         <br>
-        <input type="text" :value="paciente" @keyup="paciente = $event.target.value">
+        <!--<input type="text" :value="paciente" @keyup="paciente = $event.target.value">-->
+        <input type="text" v-model="paciente">
     </div>
 
     <script>
