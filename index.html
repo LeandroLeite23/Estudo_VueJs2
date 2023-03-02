@@ -46,10 +46,8 @@
         </p>
         <hr>
         <h4>Pacientes plano master:</h4>
-        <ul>
             <!--<li v-for="p  in pacientes" v-if="p.plano == 'Master'">{{ p.nome }}</li>-->
-            <p v-for="p  in pacientes">{{ p.plano == 'Ouro' ? p.nome : '' }}</p>
-        </ul>
+            <p v-for="p in pacitensPlanoOuro">Nome: {{ p.nome }} - Idade: {{ p.idade }}</p>
         <hr>
         <h4>Pacientes cadastrados</h4>
         <p v-for="p in pacientes">{{ p.nome }}</p>
@@ -86,6 +84,9 @@
                     msg += ' - Plano: ' + this.pacientes[index].plano
 
                     return msg
+                },
+                pacitensPlanoOuro(){
+                    return this.pacientes.filter(a => a.plano == 'Ouro')
                 }
             }
         });
